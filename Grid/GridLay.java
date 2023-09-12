@@ -10,12 +10,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+
+//Main
+
 public class GridLay{
     public static void main(String[] args) {
         new Principal().setVisible(true);
     }
 }
- 
+
+
 class Principal extends JFrame{
     private JTextField fieldPeso;
     private JTextField fieldAltura;
@@ -27,12 +31,15 @@ class Principal extends JFrame{
     public Principal(){
         setConfig();
     }
+
+
+    //ConfiguraÇões do painel
  
     private void setConfig() {
        
         this.setTitle("Calculadora de IMC");
         this.setSize(600, 150);
-        this.setLayout(new GridLayout(0, 2));
+        this.setLayout(new GridLayout(4, 4));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.getContentPane().setBackground(Color.lightGray);
          
@@ -58,10 +65,15 @@ class Principal extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
+
+                //Convertendo Text em Double
  
               
                 double peso=Double.parseDouble(fieldPeso.getText());
                 double altura=Double.parseDouble(fieldAltura.getText());
+
+
+                //Cálculo
              
                 double imc=peso/Math.pow(altura,2);
  
@@ -69,8 +81,10 @@ class Principal extends JFrame{
                 DecimalFormat df=new DecimalFormat("#0.0");
  
                 String resultado="Resultado: "+df.format(imc);
+
+
+                //Faixa de IMC
                  
-             
                 if(imc < 18.5){
                     resultado+=" Abaixo do peso";
                 }
@@ -91,11 +105,14 @@ class Principal extends JFrame{
  
              
                 lblResultado.setText(resultado);
+
+
+                //Erros
  
             }catch (ArithmeticException ar) {
                 JOptionPane.showMessageDialog(null, "Erro aritmético, causa: "+ar.getMessage());
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro desconhecido, causa: "+ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro, causa: "+ex.getMessage()+ ", Utilize o formato '0.00'");
             }
         }
     }
