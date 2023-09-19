@@ -13,11 +13,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+//main
+
 public class Main {
     public static void main(String[] args) {
         new Principal().setVisible(true);
     }
 }
+
+//Criação dos componentes da interface
 
 class Principal extends JFrame {
     private JTextField fieldPeso;
@@ -27,9 +31,13 @@ class Principal extends JFrame {
     private JLabel lblAltura;
     private JLabel lblResultado;
 
+    //Configuracões
+
     public Principal() {
         setConfig();
     }
+
+    //Layout
 
     private void setConfig() {
         this.setTitle("Calculadora de IMC");
@@ -59,6 +67,8 @@ class Principal extends JFrame {
         this.add(calcular);
         this.add(lblResultado);
     }
+
+    //Calculadora
 
     class EventoCalculaIMC implements ActionListener {
         @Override
